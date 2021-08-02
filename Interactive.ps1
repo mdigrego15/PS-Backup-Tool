@@ -38,7 +38,7 @@ function Tech-Copy{
     # /MIR to mirror the contents of the folder
     # /NJH for no Job Header, this is so that the regular expression does not pick up numbers displayed in the header and add it to the bytestotal value
     # /NJS for no Job Summary, same reason as the regular expression
-    $CommonRobocopyParams = '/MIR /NJH /NJS /NDL /NP /NC /R:0 /W:0 /BYTES /xj /xd "OneDrive - Providence College"';
+    $CommonRobocopyParams = '/MIR /NJH /NJS /NDL /NP /NC /R:0 /W:0 /BYTES /xj';
     $StagingLogPath = '{0}\temp\{1} robocopy staging.log' -f $env:windir, (Get-Date -Format 'yyyy-MM-dd HH-mm-ss');
     $StagingArgumentList = '"{0}" "{1}" /LOG:"{2}" /L {3}' -f $Source, $Destination, $StagingLogPath, $CommonRobocopyParams;
     # Running robocopy in a logging mode to find out the number of Bytes that need to be transported
@@ -54,7 +54,7 @@ function Tech-Copy{
     
     
      #Setting the log path to the logs folder on the server
-     $RoboParam = '/MIR /NDL /NJH /NJS /NP /NC /R:0 /W:0 /BYTES /xj /xd "OneDrive - Providence College"'
+     $RoboParam = '/MIR /NDL /NJH /NJS /NP /NC /R:0 /W:0 /BYTES /xj'
      $RobocopyLogPath = '{0}\temp\{1} robocopy.log' -f $env:windir, (Get-Date -Format 'yyyy-MM-dd HH-mm-ss');
      $ArgumentList = '"{0}" "{1}" /LOG:"{2}" {3}' -f $Source, $Destination, $RobocopyLogPath, $RoboParam;
      #This line is not running: Can't run robocopy from a variable? But it works in the backup script
